@@ -12,27 +12,24 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const paragraphs = data.slice(0, count);
-    console.log(paragraphs);
-    setText(paragraphs);
+    let numbCount = parseInt(count);
+    setText(data.slice(0, numbCount));
   }
 
   return (
-    <div>
-      <h2>Lorem Ipsum Starter</h2>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="paragraph" className="form-label">Paragraph</label>
-          <input type="number" className="form-input" id='paragraph' name='paragraph' min='1' max='8' step='1' value={count} onChange={handleChange} />
-        </div>
-        <button type="submit" className="btn btn-block">Generate</button>
+    <section className="section-center">
+      <h4>Lorem Ipsum Generator</h4>
+      <form className="lorem-form" onSubmit={handleSubmit}>
+          <label htmlFor="paragraph">Paragraph</label>
+          <input type="number" id='paragraph' name='paragraph' min='1' max='8' step='1' value={count} onChange={handleChange} />
+        <button type="submit" className="btn">Generate</button>
       </form>
-      <div style={{padding: '2% 5%', textAlign: 'justify'}}>
+      <article className="lorem-text">
         {text && text.map((item) => {
-          return <p key={nanoid()} style={{marginBottom: '10px', lineHeight: '1.5em'}}>{item}</p>
+          return <p key={nanoid()}>{item}</p>
         })}
-      </div>
-    </div>
+      </article>
+    </section>
   );
 };
 export default App;
